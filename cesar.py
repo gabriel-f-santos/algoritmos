@@ -11,4 +11,18 @@ def encrypt(text, slide):
             result += chr((ord(char) + slide - 97) % 26 + 97)
     return result
 
-print(encrypt("ABCDEFZ", 1))
+def decrypt(text, slide):
+    text = text.upper()
+    alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    result = ""
+    for l in text:
+        index = (alpha.find(l) - slide) % 26
+        result += alpha[index]
+    return result
+
+frase = "ABCDEFZ"
+print(f"Frase {frase}")
+encrypted = encrypt("ABCDEFZ", 1)
+print(f"Frase encriptada {encrypted}")
+decrypted = decrypt(encrypted, 1)
+print(f"Frase desencriptada {decrypted}")
